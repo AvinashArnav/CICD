@@ -18,7 +18,7 @@ pipeline {
       stage('Docker_image_Build') {
          steps {
 
-            sh "/usr/bin/docker build -t aviarnav/mytestrepo_19052020:latest ."
+            sh "/usr/bin/docker build -t chaitanyagaajula/cicd-example:latest ."
 
          }
       }
