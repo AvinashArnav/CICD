@@ -1,7 +1,11 @@
-FROM alpine:3.5
-RUN apk add --update python py-pip
-COPY requirements.txt /src/requirements.txt
-RUN pip install -r /src/requirements.txt
-COPY app.py /src
-COPY buzz /src/buzz
-CMD python /src/app.py
+FROM golang:alpine AS build-env
+RUN mkdir /go/src/app && apk update && apk add git
+ADD main.go /go/src/app/
+WORKDIR /go/src/app
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o app .
+
+FROM scratch
+WORKDIR /app
+COPY --from=build-env /go/src/app/app .
+ENTRYPOINT [ "./app" ]
+
