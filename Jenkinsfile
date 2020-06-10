@@ -11,7 +11,7 @@ pipeline {
       }
       stage('Unit_Testing') {
          steps {
-                        sh "/usr/bin/pip install -r requirements.txt"
+                        sh "/var/lib/docker/volumes/jenkins_home/_data/workspace/Hello_World/.git/refs/remotes/origin/dependabot/pip install -r requirements.txt"
             sh "/usr/bin/python -m pytest -v tests/test_generator.py"
          }
       }
