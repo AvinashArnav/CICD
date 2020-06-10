@@ -10,7 +10,7 @@ pipeline {
       }
       stage('Unit_Testing') {
          steps {
-                        sh "/usr/lib/python2.7/site-packages/pip-20.2b1-py2.7.egg/pip install -r requirements.txt"
+                        sh "/usr/bin/pip install -r requirements.txt"
             sh "/usr/bin/python -m pytest -v tests/test_generator.py"
          }
       }
