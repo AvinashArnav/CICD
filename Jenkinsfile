@@ -31,7 +31,7 @@ pipeline {
       stage('Running_image_from_DockerHub') {
          steps {
 
-           sh "/usr/bin/docker run -p 5000:5000 --rm aviarnav/cicd-example:latest"
+            sh "/usr/bin/docker run --rm -dp 5000:5000 aviarnav/cicd-example:latest"
          }
          }
       }
