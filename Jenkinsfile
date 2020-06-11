@@ -23,8 +23,8 @@ pipeline {
       }
       stage('publish') {
          steps {
-			withDockerRegistry(credentialsId: 'dockerhub') {
-    // some block
+			withDockerRegistry(credentialsId: '395f79de-e38e-4b7b-a00c-5034a43e7a86') {
+            sh "/usr/bin/docker push aviarnav/cicd-example:latest"
 }
          }
       }
